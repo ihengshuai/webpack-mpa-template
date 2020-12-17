@@ -1,0 +1,54 @@
+{
+	"root": true,
+	"env": {
+		"es6": true,
+		"browser": true,
+		"commonjs": true,
+		"node": true
+	},
+	"parser": "babel-eslint",
+	"extends": [
+		"eslint:recommended"
+	],
+	"parserOptions": {
+		"ecmaVersion": 6,
+		"sourceType": "module",
+		"allowImportExportEverywhere": true,
+		"ecmaFeatures": {
+			"jsx": true
+		}
+	},
+	"plugins": [
+		"react"
+	],
+	"rules": {
+		"indent": 0,
+		"quotes": [
+			"error",
+			"double"
+		],
+		"semi": [
+			"error",
+			"never"
+		],
+		"no-unused-vars": "warn",
+		"class-methods-use-this": "error",
+		"max-len": ["warn", {"code": 150}],
+		"react/jsx-uses-vars": 2,
+		"react/jsx-uses-react": 2,
+		"react/react-in-jsx-scope": 2
+	},
+	"settings": {
+		"import/resolver": {
+			"alias": {
+				"map": [
+					["@", "./src"],
+					["@config", "./src/config"],
+					["@pages", "./src/pages"],
+					["@request", "./src/request"],
+					["@style", "./src/style"]
+				]
+			}
+		}
+	}
+}

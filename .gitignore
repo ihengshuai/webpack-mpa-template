@@ -1,0 +1,13 @@
+node_modules
+dist
+mock/public/**
+mock/logs
+
+.idea
+*.vscode
+.DS_Store
+
+
+*.lock
+*.log
+*.error

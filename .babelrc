@@ -1,0 +1,25 @@
+{
+  "presets": [
+    "@babel/preset-flow",
+    ["@babel/preset-env",
+      {
+        "targets": {
+          "edge": "8",
+          "chrome": "30",
+					"firefox": "38",
+					"safari": "9",
+					"ie": "8"	
+        },
+        "corejs": "3",
+        "useBuiltIns": "usage"
+      }
+    ],
+		"@babel/preset-react"
+  ],
+  "plugins": [
+    "babel-plugin-transform-eval",
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
+    ["@babel/plugin-proposal-class-properties", { "loose": true }],
+		"@babel/plugin-transform-runtime"
+  ]
+}

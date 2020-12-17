@@ -1,0 +1,27 @@
+
+@import "variable";
+
+.pea-btn{
+	cursor: pointer;
+	font-size: torem(14);
+	transition: box-shadow 200ms;
+	user-select: none;
+	&:focus{
+		outline: none;
+	}
+	&.default{
+		border: none;
+		padding: torem(3) torem(10);
+		border-radius: torem(5);
+		background-color: azure;
+
+		&:hover{
+			box-shadow: 0 0 5px azure;
+		}
+
+		&:focus{
+			outline: none;
+			box-shadow: 0 0 5px azure;
+		}
+	}
+}

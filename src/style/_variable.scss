@@ -1,0 +1,21 @@
+
+$fontSize: 16;
+$themeBgColor: salmon;
+
+@function torem($px){
+	@return $px / $fontSize * 1rem;
+}
+
+@mixin textOver{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+@mixin textMuchOver($clamp: 3){
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: $clamp;
+	-webkit-box-orient: vertical;
+}
