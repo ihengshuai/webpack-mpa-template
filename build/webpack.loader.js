@@ -9,6 +9,7 @@
 const { resolve } = require("./webpack.config")
 const extractCss = require("mini-css-extract-plugin")
 const eslintFormatter = require("eslint-friendly-formatter")
+const { Client } = require("../config")
 
 // rules
 const loaders = (product = true) => {
@@ -35,7 +36,15 @@ const loaders = (product = true) => {
 			test: /\.pug$/,
 			use: [
 				"raw-loader",
-				"pug-html-loader"
+				{
+					loader: "pug-html-loader",
+					options: {
+						data: {
+							PROJECT_TITLE: Client.PROJECT_TYPE
+						},
+						basedir: resolve("../src")
+					}
+				}
 			]
 		},
 		{

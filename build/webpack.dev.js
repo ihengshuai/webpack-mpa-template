@@ -38,6 +38,7 @@ const devConfig = merge(BASE_CONFIFG, {
 		},
 		before: app => {}
 	},
+	// @ts-ignore
 	module: {
 		rules: [
 			...loaders(false)

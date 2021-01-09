@@ -1,0 +1,5 @@
+// function
+
+@function torem($px){
+	@return $px / $fontSize * 1rem;
+}

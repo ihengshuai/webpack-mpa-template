@@ -14,6 +14,7 @@ dotenv.config({
 
 module.exports = {
 	Client: {
+		PROJECT_TYPE: process.env.PROJECT_TYPE || "",
 		PORT: process.env.WEB_PORT
 	},
 	Server: {

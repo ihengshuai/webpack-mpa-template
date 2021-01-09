@@ -1,27 +1,28 @@
-@import "variable";
+@import "./lib/_variable";
+@import "./lib/_function";
+@import "./lib/_mixin";
+@import "./lib/_button";
 
-@import "common";
-
-@import "button";
+@import "./common";
 
 body {
 	background-color: $themeBgColor;
 	user-select: none;
 	text-align: center;
 
-	.notice{
+	.notice {
 		width: 100%;
-		padding: 20px;
+		padding: torem(20);
 		box-sizing: border-box;
 	}
 
-	.navbar {
+	.menu-list {
 		width: 100%;
 		height: auto;
 		padding: 20px 200px;
 		box-sizing: border-box;
 
-		.nav-item {
+		.menu-item {
 			width: 100%;
 			padding: 20px 0;
 			margin-bottom: 20px;

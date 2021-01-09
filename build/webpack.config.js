@@ -50,7 +50,7 @@ function getEntry(entryPath){
 		let isPUG = fs.existsSync(resolve(htmlPath, "index.pug"))
 		htmlPlugins.push(
 			new htmlWebpackPlugin({
-				title: "",
+				title: Client.PROJECT_TYPE,
 				template: resolve(htmlPath, isPUG ? "index.pug" : "index.html"),
 				filename: htmlName === "" ? "index.html" : (htmlName + "index.html"),
 				inject: true,

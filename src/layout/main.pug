@@ -1,0 +1,35 @@
+block vars
+
+<!DOCTYPE html>
+html(lang="en")
+	head
+		meta(charset="UTF-8")
+		meta(name="keywords" content="webpack mpa template")
+		meta(name="description" content="webpack mpa template")
+		meta(http-equiv="X-UA-Compatible" content="IE=9")
+		meta(http-equiv="X-UA-Compatible" content="ie=edge")
+		meta(name="viewport" content="width=device-width, initial-scale=1.0")
+		link(rel="shortcut icon" href="/favicon.ico" type="image/x-icon")
+		title #{title}-#{PROJECT_TITLE}
+
+		//- Selective insertion style (like: link(rel="stylesheet" href="/lib/bootstrap.css"))
+		block styles
+	body
+		//- Nav slot
+		//- Controls whether to show the Nav (Dot not show only 'showNav' is false)
+		if(showNav == false)
+		else
+			include /layout/nav.pug
+
+		//- Page main different content area 
+		block content
+
+		//- Footer slot
+		//- Controls whether to show the Footer (Dot not show only 'showFooter' is false)
+		if(showFooter == false)
+		else
+			include /layout/footer.pug
+
+		//- Selective insertion script (like: script(src="/lib/jquery.js"))
+		block scripts
+

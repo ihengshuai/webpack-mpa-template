@@ -18,7 +18,7 @@ const routes = [
 	},
 	{
 		path: "/user",
-		component:() => import("../views/User.vue"),
+		component: () => import("../views/User.vue"),  // lazy component
 		meta: {
 			title: "Vue User"
 		}
@@ -32,7 +32,7 @@ const router = new VueRouter({
 
 
 router.beforeEach((to, from, next) => {
-	to.meta?.title && (document.title = to.meta.title)
+	// to.meta?.title && (document.title = to.meta.title)
 	next()
 })
 

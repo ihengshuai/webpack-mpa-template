@@ -1,0 +1,14 @@
+@import "./lib/_variable";
+@import "./lib/_function";
+@import "./lib/_mixin";
+@import "./lib/_button";
+
+$footerHeight: 120;
+$footerColor: #222;
+
+footer.footer{
+	height: torem($footerHeight);
+	color: $footerColor;
+	line-height: torem($footerHeight);
+	text-align: center;
+}

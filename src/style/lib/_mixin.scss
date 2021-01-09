@@ -1,0 +1,35 @@
+// mixin
+
+
+@mixin textOver{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+@mixin textMuchOver($clamp: 3){
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: $clamp;
+	-webkit-box-orient: vertical;
+}
+
+@mixin bgImg($url, $px: center, $py: center, $repeat: no-repeat, $size...) {
+	background-image: url($url);
+	background-size: $size;
+	background-position: $px $py;
+	background-repeat: $repeat;
+}
+
+@mixin initList {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+@mixin only-screen($size, $tag: max-width) {
+	@media screen and ($tag: $size) {
+		@content;
+	}
+}

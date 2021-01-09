@@ -4,12 +4,12 @@
   "description": "使用Webpack搭建多页面应用，工程使用传统页面和单页面混合开发",
   "main": "index.js",
   "scripts": {
-    "del": "node ./build/webpack.del.js",
+    "clear": "node ./build/webpack.clear.js",
     "webpack-dev": "cross-env NODE_ENV=development webpack-dev-server --config ./build/webpack.dev.js  --progress",
     "webpack-build": "cross-env NODE_ENV=production webpack --config ./build/webpack.prod.js --progress",
     "mock": "nodemon ./mock/server.js",
-    "dev": "concurrently \"npm run del\" \"npm run webpack-dev\" \"npm run mock\"",
-    "build": "concurrently \"npm run del\" \"npm run webpack-build\"",
+    "dev": "concurrently -n Clear-Server,Webpack-Server,Mock-Server \"npm run clear\" \"npm run webpack-dev\" \"npm run mock\"",
+    "build": "concurrently -n Clear-Server,Webpack-Server \"npm run clear\" \"npm run webpack-build\"",
     "publish": "rm -rf mock/public/* && cp -r dist/** mock/public",
     "view": "cross-env NODE_ENV=prudction npm run mock"
   },

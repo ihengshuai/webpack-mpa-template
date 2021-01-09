@@ -13,12 +13,12 @@ export default function App() {
 
 			<Switch>
 				{routes.map((route, index) => {
-					return	<Route
-										key={route.path + index}
-										exact={route.exact === false ? false : true} 
-										component={route.component} 
-										path={route.path} 
-									/>
+					return <Route
+						key={route.path + index}
+						exact={route.exact === false ? false : true}
+						component={route.component}
+						path={route.path}
+					/>
 				})}
 			</Switch>
 

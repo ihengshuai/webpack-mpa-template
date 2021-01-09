@@ -23,8 +23,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@style/_variable";
-@import "@style/_button";
+@import "@style/lib/_variable";
 @import "@style/common";
 body {
   margin: 0;

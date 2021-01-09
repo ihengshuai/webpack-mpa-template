@@ -1,8 +1,10 @@
-<!DOCTYPE html>
-html(lang="en")
-	head
-		meta(charset="UTF-8")
-		meta(name="viewport", content="width=device-width, initial-scale=1.0")
-		title React SPA Demo
-	body
-		#app
+extends /layout/main.pug
+
+
+block vars
+	- var title = "React SPA Page"
+	- var showFooter = false
+
+
+block content
+	#app

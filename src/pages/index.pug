@@ -1,111 +1,113 @@
-doctype html
-html(lang="en")
-	head
-		meta(charset="UTF-8")
-		title Pug
-		meta(name="viewport", content="width=device-width, initial-scale=1.0")
-		link(rel="shortcut icon", href="/favicon.ico", type="image/x-icon")
-	body
-		h1.notice Click the links bottom
+extends /layout/main.pug
 
-		.navbar
-			.nav-item
-				a(href="/vue") Vue SPA Page
-			.nav-item
-				a(href="/react") React SPA Page
-			.nav-item
-				a(href="/login") Tradition Login
 
-		hr
+block vars
+	- var title = "首页"
 
-		img(src="/favicon.ico")
 
-		button(id="userBtn", class="pea-btn default") Mock请求...
+block styles
+	link(rel="stylesheet" href="")
 
-		ul#userList
 
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
-		br
+block content
+	h1.notice Click the links bottom
+	.menu-list
+		.menu-item
+			a(href="/vue") Vue SPA Page
+		.menu-item
+			a(href="/react") React SPA Page
+		.menu-item
+			a(href="/login") Tradition Login
+	hr
+
+	img(src="/favicon.ico")
+
+	button(id="userBtn" class="pea-btn default") Click Mock Button
+
+	ul#userList
+
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	br
