@@ -23,8 +23,8 @@ try {
 	middleware(app, config)
 
 	// 404
-	app.use(async(ctx, next) => {
-		ctx.redirect("/admin/404")
+	app.use(async (ctx, next) => {
+		ctx.redirect("/404")
 	})
 
 

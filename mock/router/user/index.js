@@ -7,7 +7,7 @@
  */
 
 const koaRouter = require("koa-router")
-const router = new koaRouter({prefix: "/user"})
+const router = new koaRouter({prefix: "/admin/user"})
 
 router
 	.get("/", async(ctx, next) => {

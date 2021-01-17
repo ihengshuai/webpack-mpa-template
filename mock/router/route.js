@@ -7,10 +7,13 @@
  */
 
 
-const router = require("koa-router")({prefix: "/admin"})
+const Route = require("koa-router")
+const router = new Route()
 const { routes } = require("../config")
+
 router.use(...routes)
 	.get("/404", async (ctx, next) => {
-		ctx.body = 404
+		await ctx.render("404.pug")
 	})
+	
 module.exports = router
