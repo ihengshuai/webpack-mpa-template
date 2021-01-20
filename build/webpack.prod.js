@@ -9,26 +9,26 @@
 const webpack = require("webpack")
 const { merge } = require("webpack-merge")
 const extractCss = require("mini-css-extract-plugin")
-const { BASE_CONFIFG, Copyright, resolve } = require("./webpack.config")
+const { BASE_CONFIFG, Copyright, resolve, USE_HASH } = require("./webpack.config")
 const { loaders } = require("./webpack.loader")
 
 const prodConfig = merge(BASE_CONFIFG, {
 	mode: "production",
 	output: {
 		path: resolve("../dist"),
-		filename: "js/[name].[chunkhash:4].js",
+		filename: USE_HASH ? "js/[name].[chunkhash:4].js" : "js/[name].js",
 		publicPath: "/",
-		chunkFilename: "js/[name].[chunkhash:4].js",
+		chunkFilename: USE_HASH ? "js/[name].[chunkhash:4].js" : "js/[name].js",
 	},
 	// @ts-ignore
 	module: {
 		rules: [
-			...loaders(true)
+			...loaders(USE_HASH)
 		]
 	},
 	plugins: [
 		new extractCss({
-			filename: "style/[name].[contenthash:4].css"
+			filename: USE_HASH ? "style/[name].[contenthash:4].css" : "style/[name].css",
 		}),
 		new webpack.BannerPlugin(Copyright),
 	],

@@ -12,7 +12,7 @@ const eslintFormatter = require("eslint-friendly-formatter")
 const { Client } = require("../config")
 
 // rules
-const loaders = (product = true) => {
+const loaders = (USE_HASH = false) => {
 	return [
 		{
 			test: /\.(js|jsx)/,
@@ -51,7 +51,7 @@ const loaders = (product = true) => {
 		{
 			test: /\.css$/,
 			use: [
-				product ? extractCss.loader : "style-loader",
+				USE_HASH ? extractCss.loader : "style-loader",
 				"css-loader",
 				"postcss-loader"
 			]
@@ -59,7 +59,7 @@ const loaders = (product = true) => {
 		{
 			test: /\.s(a|c)ss$/,
 			use: [
-				product ? extractCss.loader : "style-loader",
+				USE_HASH ? extractCss.loader : "style-loader",
 				"css-loader",
 				"postcss-loader",
 				"sass-loader"
@@ -71,7 +71,7 @@ const loaders = (product = true) => {
 			options: {
 				limit: 10 * 1024 * 1024,
 				outputPath: "image",
-				name: product ? "[name].[hash:4].[ext]" : "[name].[ext]",
+				name: USE_HASH ? "[name].[hash:4].[ext]" : "[name].[ext]",
 				esModule: false
 			},
 		},
@@ -81,7 +81,7 @@ const loaders = (product = true) => {
 			options: {
 				limit: 20 * 1024 * 1024,
 				outputPath: "fonts",
-				name: product ? "[name].[hash:4].[ext]" : "[name].[ext]",
+				name: USE_HASH ? "[name].[hash:4].[ext]" : "[name].[ext]",
 				esModule: false
 			}
 		},
@@ -91,7 +91,7 @@ const loaders = (product = true) => {
 			options: {
 				limit: 51200,
 				outputPath: "medias",
-				name: product ? "[name].[hash:4].[ext]" : "[name].[ext]",
+				name: USE_HASH ? "[name].[hash:4].[ext]" : "[name].[ext]",
 				esModule: false
 			}
 		}

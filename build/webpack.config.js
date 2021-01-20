@@ -133,5 +133,6 @@ module.exports = {
 	Copyright,
 	resolve,
 	SERVICE_RUN_MODE: Client.SERVICE_RUN_MODE,
+	USE_HASH: Client.USE_HASH,
 	Server_PORT: Server.PORT
 }
