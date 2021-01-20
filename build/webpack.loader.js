@@ -40,7 +40,8 @@ const loaders = (product = true) => {
 					loader: "pug-html-loader",
 					options: {
 						data: {
-							PROJECT_TITLE: Client.PROJECT_TYPE
+							PROJECT_TITLE: Client.PROJECT_TYPE,
+							SERVICE_RUN_MODE: Client.SERVICE_RUN_MODE,
 						},
 						basedir: resolve("../src")
 					}

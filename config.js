@@ -12,10 +12,16 @@ dotenv.config({
 	path: "./.env"
 })
 
+const booleanMap = new Map([
+	["false", false],
+	["true", true],
+])
+
 module.exports = {
 	Client: {
 		PROJECT_TYPE: process.env.PROJECT_TYPE || "",
-		PORT: process.env.WEB_PORT
+		PORT: process.env.WEB_PORT,
+		SERVICE_RUN_MODE: process.env.SERVICE_RUN_MODE == undefined ? true : booleanMap.get(process.env.SERVICE_RUN_MODE),
 	},
 	Server: {
 		PORT: process.env.SERVER_PORT

@@ -13,7 +13,8 @@ block content
 	h1.notice Click the links bottom
 	.menu-list
 		.menu-item
-			a(href="/vue") Vue SPA Page
+			//- 配置打包后Public是绝对路径还是相对路径两种模式(下面同理)
+			a(href=SERVICE_MODE ? "/vue" : "./vue/index.html") Vue SPA Page
 		.menu-item
 			a(href="/react") React SPA Page
 		.menu-item

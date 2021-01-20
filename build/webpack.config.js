@@ -38,11 +38,15 @@ const resolve = (filePath, ...paths) => {
 
 // 获取HTMLPlugin集合和多入口
 const htmlPlugins = []
-function getEntry(entryPath){
+function getEntry(entryPath) {
 	let entry = {}
 	glob.sync(resolve(entryPath)).forEach(filePath => {
 		let fileFolder = filePath.match(/\/pages\/(.+)\/*.js/)[1]
 		entry[fileFolder] = resolve(filePath)
+		let relativeReg = /(\.\.)*/g
+		let relativePath = path.relative(filePath, resolve("../src/pages"))
+		let relativePathArr = relativePath.match(relativeReg).filter(item => item.length).slice(1)
+		let relativePrefix = relativePathArr.reduce((p, c) => p + c + "/", "")
 
 		let reg = new RegExp(`${entryName}$`, "g")
 		let htmlPath = filePath.slice(0, filePath.lastIndexOf("/") + 1)
@@ -54,6 +58,7 @@ function getEntry(entryPath){
 				template: resolve(htmlPath, isPUG ? "index.pug" : "index.html"),
 				filename: htmlName === "" ? "index.html" : (htmlName + "index.html"),
 				inject: true,
+				publicPath: Client.SERVICE_RUN_MODE ? "" : relativePrefix,
 				chunks: [fileFolder, "vendor", "common"],
 				minify: isProd ? {
 					removeAttributeQuotes: true,
@@ -122,10 +127,11 @@ const BASE_CONFIFG = {
 
 
 module.exports = {
-    PORT,
-		BASE_CONFIFG,
-		htmlPlugins,
-		Copyright,
-		resolve,
-		Server_PORT: Server.PORT
+	PORT,
+	BASE_CONFIFG,
+	htmlPlugins,
+	Copyright,
+	resolve,
+	SERVICE_RUN_MODE: Client.SERVICE_RUN_MODE,
+	Server_PORT: Server.PORT
 }
