@@ -22,7 +22,7 @@ module.exports = async (app, config) => {
 		logger.error(error)
 	})
 
-	app.use(koaView(path.resolve(__dirname, "../template/"), {extension: "pug"}))
+	app.use(koaView(path.resolve(__dirname, "../template/"), { extension: "pug" }))
 
 	app.use(async (ctx, next) => {
 		ctx.config = config
@@ -38,7 +38,14 @@ module.exports = async (app, config) => {
 
 	app.use(bodyParser())
 
-	app.use(cors())
+	app.use(cors({
+		origin: ctx => `http://${ctx.config.DOMAIN}:${ctx.config.WEB_PORT}`,
+		maxAge: 5,
+		credentials: true,
+		allowMethods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+		allowHeaders: ["Content-Type", "Authorization", "Accept"],
+		exposeHeaders: ["WWW-Authenticate", "Server-Authorization"]
+	}))
 
 	app.use(koaStatic(path.resolve(__dirname, "../public")))
 

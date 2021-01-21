@@ -10,6 +10,9 @@ import axios from "axios"
 
 const config = {
 	timeout: 10000,
+	// eslint-disable-next-line no-undef
+	baseURL: NODE_ENV === "development" ? `http://${DOMAIN}:${SERVER_PORT}` : "",
+	withCredentials: true,
 }
 
 const instance = axios.create(config)

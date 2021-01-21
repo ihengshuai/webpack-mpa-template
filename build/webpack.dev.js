@@ -8,7 +8,7 @@
 
 const webpack = require("webpack")
 const { merge } = require("webpack-merge")
-const { BASE_CONFIFG, PORT, Server_PORT, resolve } = require("./webpack.config")
+const { BASE_CONFIFG, PORT, Server_PORT, resolve, DOMAIN } = require("./webpack.config")
 const { loaders } = require("./webpack.loader")
 
 const devConfig = merge(BASE_CONFIFG, {
@@ -19,7 +19,7 @@ const devConfig = merge(BASE_CONFIFG, {
 	},
 	devtool: "#cheap-module-eval-source-map",
 	devServer: {
-		host: "0.0.0.0",
+		host: DOMAIN,
 		disableHostCheck: true,
 		useLocalIp: true,
 		port: PORT,
@@ -36,7 +36,7 @@ const devConfig = merge(BASE_CONFIFG, {
 				target: "http://127.0.0.1:" + Server_PORT,
 			}
 		},
-		before: app => {}
+		before: app => { }
 	},
 	// @ts-ignore
 	module: {

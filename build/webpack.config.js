@@ -102,6 +102,12 @@ const BASE_CONFIFG = {
 		noParse: /jQuery/,
 	},
 	plugins: [
+		new webpack.DefinePlugin({
+			NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+			DOMAIN: JSON.stringify(Client.DOMAIN),
+			PORT: JSON.stringify(Client.PORT),
+			SERVER_PORT: JSON.stringify(Server.PORT),
+		}),
 		...htmlPlugins,
 		new VueLoaderPlugin(),
 		new copyWebpackPlugin({
@@ -134,5 +140,6 @@ module.exports = {
 	resolve,
 	SERVICE_RUN_MODE: Client.SERVICE_RUN_MODE,
 	USE_HASH: Client.USE_HASH,
+	DOMAIN: Client.DOMAIN,
 	Server_PORT: Server.PORT
 }

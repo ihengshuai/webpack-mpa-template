@@ -7,6 +7,7 @@
  */
 
 const dotenv = require("dotenv")
+const { theIP } = require("./mock/util/index")
 
 dotenv.config({
 	path: "./.env"
@@ -17,14 +18,21 @@ const booleanMap = new Map([
 	["true", true],
 ])
 
+const getDomain = domain => {
+	if (!domain || domain == "localhost") return theIP()
+	return domain
+}
+
 module.exports = {
 	Client: {
 		PROJECT_TYPE: process.env.PROJECT_TYPE || "",
 		PORT: process.env.WEB_PORT,
 		SERVICE_RUN_MODE: process.env.SERVICE_RUN_MODE == undefined ? true : booleanMap.get(process.env.SERVICE_RUN_MODE),
 		USE_HASH: process.env.USE_HASH == undefined ? true : booleanMap.get(process.env.USE_HASH),
+		DOMAIN: getDomain(process.env.DOMAIN),
 	},
 	Server: {
-		PORT: process.env.SERVER_PORT
+		PORT: process.env.SERVER_PORT,
+		DOMAIN: getDomain(process.env.DOMAIN),
 	}
 }

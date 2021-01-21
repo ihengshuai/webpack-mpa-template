@@ -9,16 +9,17 @@
 const glob = require("glob")
 const path = require("path")
 const fs = require("fs")
-const serverconfig = require("../../config")
+const { Server, Client } = require("../../config")
 
 const config = {
-	Domain: serverconfig.Domain || "localhost",
-	SERVER_PORT: serverconfig.SERVER_PORT || 9999,
-	routePath: serverconfig.routePath || "../router/**/index.js",
-	MYSQL_HOST: serverconfig.MYSQL_HOST || "127.0.0.1",
-	MYSQL_USER: serverconfig.MYSQL_USER || "root",
-	MYSQL_PASSWORD: serverconfig.MYSQL_PASSWORD || "root",
-	MYSQL_DATABASE: serverconfig.MYSQL_DATABASE || "demo"
+	DOMAIN: Server.DOMAIN,
+	SERVER_PORT: Server.PORT,
+	WEB_PORT: Client.PORT,
+	MYSQL_HOST: Server.MYSQL_HOST || "127.0.0.1",
+	MYSQL_USER: Server.MYSQL_USER,
+	MYSQL_PASSWORD: Server.MYSQL_PASSWORD,
+	MYSQL_DATABASE: Server.MYSQL_DATABASE,
+	routePath: "../router/**/index.js",
 }
 
 const findFiles = filterPath => {
