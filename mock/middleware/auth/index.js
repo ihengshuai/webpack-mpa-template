@@ -9,13 +9,17 @@
 const jwt = require("jsonwebtoken")
 const { logger } = require("../log")
 
-// api white list(RegExp)
-const apiWhiteList = ["/admin/auth"]
+// api black list(RegExp)
+const apiBlackList = ["^/api/permission"]
 
 module.exports = async (ctx, next) => {
-	if (apiWhiteList.filter(item => ctx.request.url.indexOf(item) >= 0).length > 0) {
-		next()
-		return
+	const hasBlackItem = apiBlackList.filter(item => {
+		let reg = new RegExp(item, "g")
+		let flag = reg.test(ctx.request.url)
+		return flag
+	}).length > 0
+	if (!hasBlackItem) {
+		await next()
 	} else {
 		const preToken = ctx.cookies.get(ctx.config.USER_TOKEN_COOKIE_NAME)
 		try {
@@ -38,7 +42,7 @@ module.exports = async (ctx, next) => {
 				overwrite: false,
 				httpOnly: true,
 			})
-			next()
+			await next()
 		} catch (error) {
 			ctx.body = {
 				status: 401,

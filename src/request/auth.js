@@ -10,13 +10,13 @@
 import http from "@config/http"
 
 export async function getAuthCode(){
-	return http.get("/admin/auth/code")
+	return http.get("/api/auth/code")
 }
 
 export async function userLogin(formData){
-	return http.post("/admin/auth/user/login", formData)
+	return http.post("/api/auth/user/login", formData)
 }
 
 export async function userLogout(){
-	return http.get("/admin/auth/user/logout")
+	return http.get("/api/auth/user/logout")
 }

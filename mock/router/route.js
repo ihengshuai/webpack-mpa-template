@@ -13,7 +13,7 @@ const { routes } = require("../config")
 
 router.use(...routes)
 	.get("/404", async (ctx, next) => {
-		await ctx.render("404.pug")
+		await ctx.render("404", { errorURL: ctx.query.errorURL })
 	})
 	
 module.exports = router

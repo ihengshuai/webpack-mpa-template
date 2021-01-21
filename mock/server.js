@@ -24,7 +24,7 @@ try {
 
 	// 404
 	app.use(async (ctx, next) => {
-		ctx.redirect("/404")
+		ctx.redirect("/404?errorURL=" + ctx.request.url)
 	})
 
 

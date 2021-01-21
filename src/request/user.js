@@ -9,5 +9,5 @@
 import http from "@config/http"
 
 export async function getUsers(){
-	return http.get("/admin/user")
+	return http.get("/api/permission/user")
 }

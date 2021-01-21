@@ -7,7 +7,7 @@
  */
 
 const koaRouter = require("koa-router")
-const router = new koaRouter({ prefix: "/admin/auth" })
+const router = new koaRouter({ prefix: "/api/auth" })
 const svgCaptcha = require("svg-captcha")
 const MD5 = require("crypto-js/md5")
 const jwt = require("jsonwebtoken")
