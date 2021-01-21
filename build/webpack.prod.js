@@ -20,6 +20,15 @@ const prodConfig = merge(BASE_CONFIFG, {
 		publicPath: "/",
 		chunkFilename: USE_HASH ? "js/[name].[chunkhash:4].js" : "js/[name].js",
 	},
+	stats: {
+		assets: true,
+		assetsSort: "size",
+		modules: false,
+		entrypoints: false,
+		chunks: false,
+		chunkModules: false,
+		colors: true,
+	},
 	// @ts-ignore
 	module: {
 		rules: [

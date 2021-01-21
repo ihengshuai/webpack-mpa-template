@@ -24,6 +24,7 @@ const devConfig = merge(BASE_CONFIFG, {
 		useLocalIp: true,
 		port: PORT,
 		open: true,
+		hot: true,
 		contentBase: resolve("../dist"),
 		historyApiFallback: true,
 		overlay: {
