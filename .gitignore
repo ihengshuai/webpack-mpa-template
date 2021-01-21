@@ -1,6 +1,6 @@
 node_modules
 dist
-mock/public/**
+mock/public/:
 mock/logs
 
 .idea
