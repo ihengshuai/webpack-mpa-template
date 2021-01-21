@@ -7,20 +7,23 @@
  */
 
 const koaRouter = require("koa-router")
-const router = new koaRouter({prefix: "/admin/user"})
+const router = new koaRouter({ prefix: "/admin/user" })
 
 router
-	.get("/", async(ctx, next) => {
+	.get("/", async (ctx, next) => {
 		ctx.body = await ctx.Mock({
+			status: 200,
 			path: ctx.path,
-			"users|20-30": [
-				{
-					"id|+1": 0,
-					"age|18-24": 18,
-					"username": "@cname",
-					"province": "@province"
-				}
-			],
+			dataList: {
+				"users|20-30": [
+					{
+						"id|+1": 0,
+						"age|18-24": 18,
+						"username": "@cname",
+						"province": "@province"
+					}
+				],
+			},
 			date: +new Date,
 		})
 	})

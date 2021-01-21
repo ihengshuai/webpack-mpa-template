@@ -107,6 +107,8 @@ const BASE_CONFIFG = {
 			DOMAIN: JSON.stringify(Client.DOMAIN),
 			PORT: JSON.stringify(Client.PORT),
 			SERVER_PORT: JSON.stringify(Server.PORT),
+			USER_TOKEN_COOKIE_NAME: JSON.stringify(Client.USER_TOKEN_COOKIE_NAME),
+			AUTH_CODE_COOKIE_NAME: JSON.stringify(Client.AUTH_CODE_COOKIE_NAME),
 		}),
 		...htmlPlugins,
 		new VueLoaderPlugin(),

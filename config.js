@@ -30,9 +30,14 @@ module.exports = {
 		SERVICE_RUN_MODE: process.env.SERVICE_RUN_MODE == undefined ? true : booleanMap.get(process.env.SERVICE_RUN_MODE),
 		USE_HASH: process.env.USE_HASH == undefined ? true : booleanMap.get(process.env.USE_HASH),
 		DOMAIN: getDomain(process.env.DOMAIN),
+		USER_TOKEN_COOKIE_NAME: process.env.USER_TOKEN_COOKIE_NAME,
+		AUTH_CODE_COOKIE_NAME: process.env.AUTH_CODE_COOKIE_NAME,
 	},
 	Server: {
 		PORT: process.env.SERVER_PORT,
 		DOMAIN: getDomain(process.env.DOMAIN),
+		USER_TOKEN_COOKIE_NAME: process.env.USER_TOKEN_COOKIE_NAME,
+		AUTH_CODE_COOKIE_NAME: process.env.AUTH_CODE_COOKIE_NAME,
+		SECRET: process.env.SECRET,
 	}
 }

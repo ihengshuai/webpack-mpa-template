@@ -21,9 +21,23 @@ block content
 			a(href="/login") Tradition Login
 	hr
 
+	.login-wrap
+		.account
+			input(type="text" placeholder="请输入账号...(admin)")#account
+		.pwd
+			input(type="text" placeholder="请输入密码...(123456)")#pwd
+		.code-wrap
+			input(type="text" placeholder="请输入验证码...")#code
+			#codeSvg
+		.btn-wrap
+			button.btn#loginBtn 登录
+			button.btn#logoutBtn 退出(模拟,正常登录后显示)
+
+	br
+
 	img(src="/favicon.ico")
 
-	button(id="userBtn" class="pea-btn default") Click Mock Button
+	button(id="userBtn" class="pea-btn default") Click Mock Button(need token)
 
 	ul#userList
 

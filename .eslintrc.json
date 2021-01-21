@@ -24,11 +24,11 @@
 	"rules": {
 		"indent": 0,
 		"quotes": [
-			"error",
+			"warn",
 			"double"
 		],
 		"semi": [
-			"error",
+			"warn",
 			"never"
 		],
 		"no-unused-vars": "warn",

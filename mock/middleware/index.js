@@ -13,6 +13,7 @@ const bodyParser = require("koa-bodyparser")
 const cors = require("koa2-cors")
 const koaView = require("koa-views")
 const { logger, accessLogger } = require("./log")
+const verifyAuth = require("./auth")
 const Mock = require("mockjs").mock
 
 const router = require("../router/route")
@@ -50,6 +51,8 @@ module.exports = async (app, config) => {
 	app.use(koaStatic(path.resolve(__dirname, "../public")))
 
 	app.use(koaStatic(path.resolve(__dirname, "../static")))
+
+	app.use((ctx, next) => verifyAuth(ctx, next))
 
 	app.use(router.routes()).use(router.allowedMethods())
 
