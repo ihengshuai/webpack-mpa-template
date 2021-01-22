@@ -58,7 +58,7 @@ function getEntry(entryPath) {
 				template: resolve(htmlPath, isPUG ? "index.pug" : "index.html"),
 				filename: htmlName === "" ? "index.html" : (htmlName + "index.html"),
 				inject: true,
-				publicPath: Client.SERVICE_RUN_MODE ? "" : relativePrefix,
+				publicPath: Client.SERVICE_RUN_MODE ? "/" : relativePrefix,
 				chunks: [fileFolder, "vendor", "common"],
 				minify: isProd ? {
 					removeAttributeQuotes: true,
