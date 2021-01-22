@@ -43,7 +43,7 @@ const loaders = (USE_HASH = false) => {
 							PROJECT_TITLE: Client.PROJECT_TYPE,
 							SERVICE_RUN_MODE: Client.SERVICE_RUN_MODE,
 						},
-						basedir: resolve("../src")
+						basedir: resolve("../client/src")
 					}
 				}
 			]

@@ -44,7 +44,7 @@ function getEntry(entryPath) {
 		let fileFolder = filePath.match(/\/pages\/(.+)\/*.js/)[1]
 		entry[fileFolder] = resolve(filePath)
 		let relativeReg = /(\.\.)*/g
-		let relativePath = path.relative(filePath, resolve("../src/pages"))
+		let relativePath = path.relative(filePath, resolve("../client/src/pages"))
 		let relativePathArr = relativePath.match(relativeReg).filter(item => item.length).slice(1)
 		let relativePrefix = relativePathArr.reduce((p, c) => p + c + "/", "")
 
@@ -78,20 +78,20 @@ function getEntry(entryPath) {
 
 // 公共配置
 const BASE_CONFIFG = {
-	entry: getEntry(`../src/pages/**/${entryName}.js`),
+	entry: getEntry(`../client/src/pages/**/${entryName}.js`),
 	resolve: {
 		modules: [resolve("../node_modules")],
 		extensions: [".js", ".vue", ".json", ".css", ".jsx"],
 		alias: {
-			"@": resolve("../src"),
-			"@assets": resolve("../src/assets"),
-			"@components": resolve("../src/components"),
-			"@layout": resolve("../src/layout"),
-			"@pages": resolve("../src/pages"),
-			"@util": resolve("../src/util"),
-			"@style": resolve("../src/style"),
-			"@request": resolve("../src/request"),
-			"@config": resolve("../src/config"),
+			"@": resolve("../client/src"),
+			"@assets": resolve("../client/src/assets"),
+			"@components": resolve("../client/src/components"),
+			"@layout": resolve("../client/src/layout"),
+			"@pages": resolve("../client/src/pages"),
+			"@util": resolve("../client/src/util"),
+			"@style": resolve("../client/src/style"),
+			"@request": resolve("../client/src/request"),
+			"@config": resolve("../client/src/config"),
 		}
 	},
 	externals: {
@@ -115,8 +115,8 @@ const BASE_CONFIFG = {
 		new copyWebpackPlugin({
 			patterns: [
 				{
-					from: resolve("../public"),
-					to: resolve("../dist")
+					from: resolve("../client/public"),
+					to: resolve("../client/dist")
 				}
 			]
 		}),

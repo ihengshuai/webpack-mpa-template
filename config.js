@@ -7,7 +7,7 @@
  */
 
 const dotenv = require("dotenv")
-const { theIP } = require("./mock/util/index")
+const { theIP } = require("./server/util/index")
 
 dotenv.config({
 	path: "./.env"
@@ -34,7 +34,7 @@ module.exports = {
 		AUTH_CODE_COOKIE_NAME: process.env.AUTH_CODE_COOKIE_NAME,
 	},
 	Server: {
-		PORT: process.env.SERVER_PORT,
+		PORT: process.env.SERVER_PORT || "9999",
 		DOMAIN: getDomain(process.env.DOMAIN),
 		USER_TOKEN_COOKIE_NAME: process.env.USER_TOKEN_COOKIE_NAME,
 		AUTH_CODE_COOKIE_NAME: process.env.AUTH_CODE_COOKIE_NAME,

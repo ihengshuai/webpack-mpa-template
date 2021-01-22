@@ -10,7 +10,7 @@ yarn run dev
 
 yarn run build
 
-yarn run publish
+yarn run deploy
 
 yarn run view
 ```
@@ -34,8 +34,8 @@ HTML可以使用pug语法代替，优先pug文件，没有的话就是HTML文件
 ### 命名规范
 webpack以`entry.js`为入口，`pages`下的文件名都是真实路径，pages下的路径可以无限嵌套，模拟真实的路径，htmlloader以`index.html或index.pug`为入口
 
-### Mock
-Mock目录是项目的mock服务，用来模拟各种数据，router文件夹下的index.js是路由的入口文件，它会遍历router文件夹夹得所有文件夹下的index.js文件，自动生成路由，mock已经挂在到koa的上下文中，不需要再单独的路由页面引入。
+### Server
+Server目录是项目的mock服务，用来模拟各种数据，router文件夹下的index.js是路由的入口文件，它会遍历router文件夹夹得所有文件夹下的index.js文件，自动生成路由，mock已经挂在到koa的上下文中，不需要再单独的路由页面引入。
 
 ### 浏览器支持
 - IE >= 9

@@ -14,7 +14,7 @@ const { loaders } = require("./webpack.loader")
 const devConfig = merge(BASE_CONFIFG, {
 	mode: "development",
 	output: {
-		path: resolve("../dist"),
+		path: resolve("../client/dist"),
 		filename: "js/[name].js"
 	},
 	devtool: "#cheap-module-eval-source-map",
@@ -25,7 +25,7 @@ const devConfig = merge(BASE_CONFIFG, {
 		port: PORT,
 		open: true,
 		hot: true,
-		contentBase: resolve("../dist"),
+		contentBase: resolve("../client/dist"),
 		historyApiFallback: true,
 		overlay: {
 			warnings: false,

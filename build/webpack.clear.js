@@ -15,22 +15,26 @@ const Log = console.log
 
 Log(chalk.hex("#3CB371").bold("Starting clear the last packaging result."))
 
+const whiteLists = ['favicon.ico']
+const whiteListPaths = whiteLists.map(filename => path.resolve(__dirname, '../server/public', filename))
+
 // clean prev package
-glob.sync(path.resolve(__dirname, "../dist") + "/*").forEach(async filePath => {
+glob.sync(path.resolve(__dirname, "../client/dist") + "/*").forEach(async filePath => {
 	del(filePath, () => {
 		Log(chalk.hex("#E9232C").bold("Clear: ") + chalk.hex("#666").underline(filePath))
 	})
 })
 
 // clean publish to public
-glob.sync(path.resolve(__dirname, "../mock/public") + "/*").forEach(async filePath => {
+glob.sync(path.resolve(__dirname, "../server/public") + "/*").forEach(async filePath => {
+  if(whiteListPaths.some(file => file == filePath.replace(/(\/)/g , "\\"))) return
 	del(filePath, () => {
 		Log(chalk.hex("#E9232C").bold("Clear: ") + chalk.hex("#666").underline(filePath))
 	})
 })
 
 // clean logs
-glob.sync(path.resolve(__dirname, "../mock/logs") + "/*").forEach(async filePath => {
+glob.sync(path.resolve(__dirname, "../server/logs") + "/*").forEach(async filePath => {
 	del(filePath, () => {
 		Log(chalk.hex("#E9232C").bold("Clear: ") + chalk.hex("#666").underline(filePath))
 	})

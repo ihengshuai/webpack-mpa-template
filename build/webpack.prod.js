@@ -15,7 +15,7 @@ const { loaders } = require("./webpack.loader")
 const prodConfig = merge(BASE_CONFIFG, {
 	mode: "production",
 	output: {
-		path: resolve("../dist"),
+		path: resolve("../client/dist"),
 		filename: USE_HASH ? "js/[name].[chunkhash:4].js" : "js/[name].js",
 		publicPath: "/",
 		chunkFilename: USE_HASH ? "js/[name].[chunkhash:4].js" : "js/[name].js",

@@ -7,11 +7,11 @@
     "clear": "node ./build/webpack.clear.js",
     "webpack-dev": "cross-env NODE_ENV=development webpack-dev-server --config ./build/webpack.dev.js  --progress",
     "webpack-build": "cross-env NODE_ENV=production webpack --config ./build/webpack.prod.js --progress",
-    "mock": "nodemon ./mock/server.js",
-    "dev": "concurrently -n Clear-Server,Webpack-Server,Mock-Server \"npm run clear\" \"npm run webpack-dev\" \"npm run mock\"",
+    "server": "nodemon ./server/server.js",
+    "dev": "concurrently -n Clear-Server,Webpack-Server,Serve-Server \"npm run clear\" \"npm run webpack-dev\" \"npm run server\"",
     "build": "concurrently -n Clear-Server,Webpack-Server \"npm run clear\" \"npm run webpack-build\"",
-    "publish": "rm -rf mock/public/* && cp -r dist/** mock/public",
-    "view": "cross-env NODE_ENV=prudction npm run mock"
+    "deploy": "rm -rf server/public/* && cp -r client/dist/** server/public",
+    "view": "cross-env NODE_ENV=prudction npm run server"
   },
   "repository": "https://github.com/Peachick/webpack-mpa-template.git",
   "author": "Peachick <wsm_1105@163.com>",

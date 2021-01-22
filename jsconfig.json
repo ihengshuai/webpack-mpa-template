@@ -4,13 +4,13 @@
 		"target": "es2016",
 		"allowSyntheticDefaultImports": false,
 		"paths": {
-			"@/*": ["./src/*"],
-			"@config/*": ["./src/config/*"],
-			"@layout/*": ["./src/layout/*"],
-			"@request/*": ["./src/request/*"],
-			"@style/*": ["./src/style/*"]
+			"@/*": ["./client/src/*"],
+			"@config/*": ["./client/src/config/*"],
+			"@layout/*": ["./client/src/layout/*"],
+			"@request/*": ["./client/src/request/*"],
+			"@style/*": ["./client/src/style/*"]
 		}
 	},
-	"exclude": ["node_modules", "dist"],
-	"include": ["src"]
+	"exclude": ["node_modules", "./client/dist"],
+	"include": ["./client/src"]
 }

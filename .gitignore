@@ -1,7 +1,8 @@
 node_modules
 dist
-mock/public/*
-mock/logs
+server/public/*
+!server/public/favicon.ico
+server/logs
 
 .idea
 *.vscode
