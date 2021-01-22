@@ -9,24 +9,10 @@
 const koaRouter = require("koa-router")
 const router = new koaRouter({ prefix: "/api/permission/user" })
 
+const userController = require("../../../controller/user")
+
 router
-	.get("/", async (ctx, next) => {
-		ctx.body = await ctx.Mock({
-			status: 200,
-			path: ctx.path,
-			dataList: {
-				"users|20-30": [
-					{
-						"id|+1": 0,
-						"age|18-24": 18,
-						"username": "@cname",
-						"province": "@province"
-					}
-				],
-			},
-			date: +new Date,
-		})
-	})
+	.get("/", userController.getUsers)
 
 
 module.exports = router

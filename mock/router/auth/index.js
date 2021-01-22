@@ -8,101 +8,14 @@
 
 const koaRouter = require("koa-router")
 const router = new koaRouter({ prefix: "/api/auth" })
-const svgCaptcha = require("svg-captcha")
-const MD5 = require("crypto-js/md5")
-const jwt = require("jsonwebtoken")
+
+const authController = require("../../controller/auth")
 
 router
-	.get("/code", async (ctx, next) => {
-		const captcha = await svgCaptcha.create({
-			fontSize: 38,
-			noise: 4,
-			width: 86,
-			height: 32,
-			inverse: false,
-			ignoreChars: "0oO1ilI",
-			color: true,
-			background: "#eee",
-		})
-		console.log("[captcha]: " + captcha.text)
-		const md5_code = await MD5(captcha.text.toLowerCase()).toString()
-		ctx.cookies.set(ctx.config.AUTH_CODE_COOKIE_NAME, md5_code, {
-			domain: ctx.config.DOMAIN,
-			maxAge: 1000 * 60 * 5,
-			httpOnly: false,
-		})
-		ctx.set("Content-Type", "image/svg+xml")
-		ctx.body = String(captcha.data)
-	})
-	.post("/user/login", async (ctx, next) => {
-		const { account, pwd, code } = ctx.request.body
-		const codeCookie = ctx.cookies.get(ctx.config.AUTH_CODE_COOKIE_NAME)
-		const realPwd = MD5("123456").toString()
-
-		if (!code) {
-			ctx.body = {
-				status: 401,
-				error: "验证码不能为空",
-			}
-			return
-		}
-		if (!account || !pwd) {
-			ctx.body = {
-				status: 401,
-				error: "账号或密码不能为空",
-			}
-			return
-		}
-		if (MD5(code.toLowerCase()).toString() != codeCookie) {
-			ctx.body = {
-				status: 401,
-				error: "验证码错误",
-			}
-			return
-		}
-		if (account == "admin" && pwd == realPwd) {
-			ctx.cookies.set(ctx.config.AUTH_CODE_COOKIE_NAME, "", { signed: false, maxAge: 0 })
-			const payload = {
-				account,
-				sex: 1,
-				phone: "18722229999",
-				priority: 1,
-				position: "programmer",
-				date: +new Date,
-			}
-			const token = await jwt.sign(payload, ctx.config.SECRET, {expiresIn: 10 * 60 * 1000})
-			ctx.cookies.set(ctx.config.USER_TOKEN_COOKIE_NAME, token, {
-				domain: ctx.config.DOMAIN,
-				path: "/",
-				maxAge: 10 * 60 * 1000,
-				overwrite: false,
-				httpOnly: true,
-			})
-			ctx.body = {
-				status: 200,
-				msg: "登录成功",
-				dataList: {
-					token,
-				}
-			}
-			return
-		} else {
-			ctx.body = {
-				status: 401,
-				error: "账号或密码错误",
-			}
-		}
-	})
-	.get("/user/logout", async (ctx , next) => {
-		ctx.cookies.set(ctx.config.USER_TOKEN_COOKIE_NAME, "", { signed: false, maxAge: 0 })
-		ctx.body = {
-			status: 200,
-			msg: "退出成功",
-		}
-	})
-	.post("/admin/login", async (ctx, next) => {
-
-	})
+	.get("/code", authController.code)
+	.post("/user/login", authController.userLogin)
+	.get("/user/logout", authController.userLogout)
+	.post("/admin/login", authController.adminLogin)
 
 
 module.exports = router
