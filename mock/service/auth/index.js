@@ -12,6 +12,11 @@ module.exports = {
 	// user login
 	userLogin: async (ctx, next) => {
 		// query sql
+		if(ctx.config.USE_DB) {  // 如果使用了数据库
+			const { results } = await ctx.db("select * from user")
+			console.log(results[0].account)
+		}
+
 		const realPwd = MD5("123456").toString(),
 			realAccount = "admin"
 		return { realAccount, realPwd }

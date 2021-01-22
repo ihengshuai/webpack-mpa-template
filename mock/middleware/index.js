@@ -14,6 +14,7 @@ const cors = require("koa2-cors")
 const koaView = require("koa-views")
 const { logger, accessLogger } = require("./log")
 const verifyAuth = require("./auth")
+const db = require("./mysql")
 const Mock = require("mockjs").mock
 
 const router = require("../router/route")
@@ -27,6 +28,11 @@ module.exports = async (app, config) => {
 
 	app.use(async (ctx, next) => {
 		ctx.config = config
+		await next()
+	})
+
+	app.use(async (ctx, next) => {
+		ctx.db = db
 		await next()
 	})
 

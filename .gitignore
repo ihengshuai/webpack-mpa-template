@@ -11,3 +11,4 @@ mock/logs
 *.lock
 *.log
 *.error
+package-lock.json

@@ -122,7 +122,7 @@ const BASE_CONFIFG = {
 		}),
 		new terminalNotice({
 			compilationSuccessInfo: {
-				messages: [`Your application is running here http://localhost:${PORT}`],
+				messages: [`Your application is running here http://${Client.DOMAIN}:${PORT}`],
 				notes: ["Some additionnal notes to be displayed unpon successful compilation"],
 			},
 			clearConsole: true,
