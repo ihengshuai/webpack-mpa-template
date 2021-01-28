@@ -90,7 +90,7 @@ const BASE_CONFIFG = {
 			"@pages": resolve("../client/src/pages"),
 			"@util": resolve("../client/src/util"),
 			"@style": resolve("../client/src/style"),
-			"@request": resolve("../client/src/request"),
+			"@api": resolve("../client/src/api"),
 			"@config": resolve("../client/src/config"),
 		}
 	},

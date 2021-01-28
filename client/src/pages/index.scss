@@ -1,9 +1,4 @@
-@import "./lib/_variable";
-@import "./lib/_function";
-@import "./lib/_mixin";
-@import "./lib/_button";
-
-@import "./common";
+@import "@style/global";
 
 body {
 	background-color: $themeBgColor;

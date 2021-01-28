@@ -23,8 +23,8 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@style/lib/_variable";
-@import "@style/common";
+@import "@style/global";
+
 body {
   margin: 0;
   padding: 0;
