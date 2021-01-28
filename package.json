@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "clear": "node ./build/webpack.clear.js",
-    "webpack-dev": "cross-env NODE_ENV=development webpack-dev-server --config ./build/webpack.dev.js  --progress",
-    "webpack-build": "cross-env NODE_ENV=production webpack --config ./build/webpack.prod.js --progress",
+    "webpack-dev": "cross-env NODE_ENV=development webpack-dev-server --config ./build/webpack.dev.js",
+    "webpack-build": "cross-env NODE_ENV=production webpack --config ./build/webpack.prod.js",
     "server": "nodemon ./server/server.js",
-    "dev": "concurrently -n Clear-Server,Webpack-Server,Serve-Server \"npm run clear\" \"npm run webpack-dev\" \"npm run server\"",
-    "build": "concurrently -n Clear-Server,Webpack-Server \"npm run clear\" \"npm run webpack-build\"",
+    "dev": "concurrently -n Clear-Serve,Webpack-Serve,Server-Serve \"npm run clear\" \"npm run webpack-dev\" \"npm run server\"",
+    "build": "concurrently -n Clear-Server,Webpack-Serve \"npm run clear\" \"npm run webpack-build\"",
     "deploy": "rm -rf server/public/* && cp -r client/dist/** server/public",
     "view": "cross-env NODE_ENV=prudction npm run server"
   },
@@ -59,6 +59,7 @@
     "node-sass": "^5.0.0",
     "nodemon": "^2.0.6",
     "open": "^7.3.0",
+    "ora": "^5.3.0",
     "os": "^0.1.1",
     "pkg-backtop": "^0.0.1",
     "postcss-loader": "^4.1.0",

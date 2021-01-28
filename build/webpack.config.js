@@ -12,6 +12,7 @@ const path = require("path")
 const glob = require("glob")
 const webpack = require("webpack")
 const package = require("../package.json")
+const ora = require("ora")
 const copyWebpackPlugin = require("copy-webpack-plugin")
 const { VueLoaderPlugin } = require("vue-loader")
 const htmlWebpackPlugin = require("html-webpack-plugin")
@@ -76,6 +77,9 @@ function getEntry(entryPath) {
 }
 
 
+const spinner = ora(`Building for ${process.env.NODE_ENV}...`)
+spinner.start()
+
 // 公共配置
 const BASE_CONFIFG = {
 	entry: getEntry(`../client/src/pages/**/${entryName}.js`),
@@ -130,7 +134,7 @@ const BASE_CONFIFG = {
 				// ...
 			}
 		}),
-	]
+	],
 }
 
 

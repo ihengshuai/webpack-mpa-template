@@ -29,6 +29,9 @@ const prodConfig = merge(BASE_CONFIFG, {
 		chunkModules: false,
 		colors: true,
 	},
+	performance: {
+		hints: 'warning',
+	},
 	// @ts-ignore
 	module: {
 		rules: [
