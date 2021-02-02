@@ -100,8 +100,8 @@ const BASE_CONFIFG = {
 		}
 	},
 	externals: {
-		jquery: "jQuery",
-		popper: "popper.js"
+		// jquery: "jQuery",
+		// popper: "popper.js"
 	},
 	module: {
 		noParse: /jQuery/,

@@ -11,12 +11,17 @@
     "dev": "concurrently -n Clear-Serve,Webpack-Serve,Server-Serve \"npm run clear\" \"npm run webpack-dev\" \"npm run server\"",
     "build": "concurrently -n Clear-Serve,Webpack-Serve \"npm run clear\" \"npm run webpack-build\"",
     "deploy": "rm -rf server/public/* && cp -r client/dist/** server/public",
-		"view": "cross-env NODE_ENV=prudction npm run server",
+    "view": "cross-env NODE_ENV=prudction npm run server",
     "lint": "eslint --ext .js ./"
-	},
-	"nodemonConfig": {
-		"verbose": false,
-    "ignore": ["client/*", "build/*", "node_modules/*", "server/logs"],
+  },
+  "nodemonConfig": {
+    "verbose": false,
+    "ignore": [
+      "client/*",
+      "build/*",
+      "node_modules/*",
+      "server/logs"
+    ],
     "delay": "1500"
   },
   "repository": "https://github.com/Peachick/webpack-mpa-template.git",
@@ -90,6 +95,7 @@
   },
   "dependencies": {
     "crypto-js": "^4.0.0",
+    "jquery": "^3.5.1",
     "js-cookie": "^2.2.1",
     "koa": "^2.13.0",
     "mysql": "^2.18.1",
