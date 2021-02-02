@@ -13,6 +13,7 @@ const glob = require("glob")
 const webpack = require("webpack")
 const package = require("../package.json")
 const ora = require("ora")
+const chalk = require("chalk")
 const copyWebpackPlugin = require("copy-webpack-plugin")
 const { VueLoaderPlugin } = require("vue-loader")
 const htmlWebpackPlugin = require("html-webpack-plugin")
@@ -77,7 +78,7 @@ function getEntry(entryPath) {
 }
 
 
-const spinner = ora(`Building for ${process.env.NODE_ENV}...`)
+const spinner = ora(chalk.hex("#436EEE").bold(`Building for ${process.env.NODE_ENV}...`))
 spinner.start()
 
 // 公共配置
@@ -125,9 +126,9 @@ const BASE_CONFIFG = {
 			]
 		}),
 		new terminalNotice({
+			// @ts-ignore
 			compilationSuccessInfo: {
-				messages: [`Your application is running here http://${Client.DOMAIN}:${PORT}`],
-				notes: ["Some additionnal notes to be displayed unpon successful compilation"],
+				messages: [`Your application is running the url ☞ ${chalk.blue.underline('http://' + Client.DOMAIN + ':' + PORT)}`],
 			},
 			clearConsole: true,
 			onErrors: (severity, errors) => {
@@ -147,5 +148,6 @@ module.exports = {
 	SERVICE_RUN_MODE: Client.SERVICE_RUN_MODE,
 	USE_HASH: Client.USE_HASH,
 	DOMAIN: Client.DOMAIN,
-	Server_PORT: Server.PORT
+	Server_PORT: Server.PORT,
+	OPEN_BROWER: Client.OPEN_BROWER,
 }

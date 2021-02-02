@@ -8,7 +8,7 @@
 
 const webpack = require("webpack")
 const { merge } = require("webpack-merge")
-const { BASE_CONFIFG, PORT, Server_PORT, resolve, DOMAIN } = require("./webpack.config")
+const { BASE_CONFIFG, PORT, Server_PORT, resolve, DOMAIN, OPEN_BROWER } = require("./webpack.config")
 const { loaders } = require("./webpack.loader")
 
 const devConfig = merge(BASE_CONFIFG, {
@@ -23,13 +23,13 @@ const devConfig = merge(BASE_CONFIFG, {
 		disableHostCheck: true,
 		useLocalIp: true,
 		port: PORT,
-		open: true,
+		open: OPEN_BROWER,
 		hot: true,
 		contentBase: resolve("../client/dist"),
 		historyApiFallback: true,
 		overlay: {
-			warnings: false,
-			errors: true
+			warnings: true,
+			errors: true,
 		},
 		stats: "errors-only",
 		proxy: {

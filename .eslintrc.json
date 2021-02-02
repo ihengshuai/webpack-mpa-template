@@ -45,6 +45,9 @@
 					["@", "./src"],
 					["@config", "./src/config"],
 					["@pages", "./src/pages"],
+					["@components", "./src/components"],
+					["@util", "./src/util"],
+					["@api", "./src/api"],
 					["@request", "./src/request"],
 					["@style", "./src/style"]
 				]
